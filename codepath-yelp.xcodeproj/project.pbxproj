@@ -13,6 +13,8 @@
 		E32805221A8F01C90067AD88 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E32805211A8F01C90067AD88 /* Images.xcassets */; };
 		E32805251A8F01C90067AD88 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E32805231A8F01C90067AD88 /* LaunchScreen.xib */; };
 		E32805311A8F01C90067AD88 /* codepath_yelpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32805301A8F01C90067AD88 /* codepath_yelpTests.swift */; };
+		E328053B1A8F34EF0067AD88 /* YelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E328053A1A8F34EF0067AD88 /* YelpViewController.swift */; };
+		E328053D1A8F3C180067AD88 /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E328053C1A8F3C180067AD88 /* RestaurantCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		E328052A1A8F01C90067AD88 /* codepath-yelpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "codepath-yelpTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E328052F1A8F01C90067AD88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E32805301A8F01C90067AD88 /* codepath_yelpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = codepath_yelpTests.swift; sourceTree = "<group>"; };
+		E328053A1A8F34EF0067AD88 /* YelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpViewController.swift; sourceTree = "<group>"; };
+		E328053C1A8F3C180067AD88 /* RestaurantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 				E32805211A8F01C90067AD88 /* Images.xcassets */,
 				E32805231A8F01C90067AD88 /* LaunchScreen.xib */,
 				E32805181A8F01C90067AD88 /* Supporting Files */,
+				E328053A1A8F34EF0067AD88 /* YelpViewController.swift */,
+				E328053C1A8F3C180067AD88 /* RestaurantCell.swift */,
 			);
 			path = "codepath-yelp";
 			sourceTree = "<group>";
@@ -212,6 +218,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E328053D1A8F3C180067AD88 /* RestaurantCell.swift in Sources */,
+				E328053B1A8F34EF0067AD88 /* YelpViewController.swift in Sources */,
 				E328051D1A8F01C90067AD88 /* ViewController.swift in Sources */,
 				E328051B1A8F01C90067AD88 /* AppDelegate.swift in Sources */,
 			);
