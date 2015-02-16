@@ -14,7 +14,8 @@
 		E32805251A8F01C90067AD88 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E32805231A8F01C90067AD88 /* LaunchScreen.xib */; };
 		E32805311A8F01C90067AD88 /* codepath_yelpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32805301A8F01C90067AD88 /* codepath_yelpTests.swift */; };
 		E328053B1A8F34EF0067AD88 /* YelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E328053A1A8F34EF0067AD88 /* YelpViewController.swift */; };
-		E328053D1A8F3C180067AD88 /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E328053C1A8F3C180067AD88 /* RestaurantCell.swift */; };
+		E328053D1A8F3C180067AD88 /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E328053C1A8F3C180067AD88 /* ResultCell.swift */; };
+		E348F1CD1A914CAB002E9473 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E348F1CC1A914CAB002E9473 /* YelpClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +40,9 @@
 		E328052F1A8F01C90067AD88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E32805301A8F01C90067AD88 /* codepath_yelpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = codepath_yelpTests.swift; sourceTree = "<group>"; };
 		E328053A1A8F34EF0067AD88 /* YelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpViewController.swift; sourceTree = "<group>"; };
-		E328053C1A8F3C180067AD88 /* RestaurantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
+		E328053C1A8F3C180067AD88 /* ResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
+		E348F1CC1A914CAB002E9473 /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
+		E348F1CE1A914D0E002E9473 /* codepath-yelp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "codepath-yelp-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +91,9 @@
 				E32805231A8F01C90067AD88 /* LaunchScreen.xib */,
 				E32805181A8F01C90067AD88 /* Supporting Files */,
 				E328053A1A8F34EF0067AD88 /* YelpViewController.swift */,
-				E328053C1A8F3C180067AD88 /* RestaurantCell.swift */,
+				E328053C1A8F3C180067AD88 /* ResultCell.swift */,
+				E348F1CC1A914CAB002E9473 /* YelpClient.swift */,
+				E348F1CE1A914D0E002E9473 /* codepath-yelp-Bridging-Header.h */,
 			);
 			path = "codepath-yelp";
 			sourceTree = "<group>";
@@ -218,7 +223,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E328053D1A8F3C180067AD88 /* RestaurantCell.swift in Sources */,
+				E348F1CD1A914CAB002E9473 /* YelpClient.swift in Sources */,
+				E328053D1A8F3C180067AD88 /* ResultCell.swift in Sources */,
 				E328053B1A8F34EF0067AD88 /* YelpViewController.swift in Sources */,
 				E328051D1A8F01C90067AD88 /* ViewController.swift in Sources */,
 				E328051B1A8F01C90067AD88 /* AppDelegate.swift in Sources */,
@@ -344,9 +350,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "codepath-yelp/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "codepath-yelp/codepath-yelp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -354,9 +363,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "codepath-yelp/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "codepath-yelp/codepath-yelp-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -413,6 +424,7 @@
 				E32805361A8F01C90067AD88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E32805371A8F01C90067AD88 /* Build configuration list for PBXNativeTarget "codepath-yelpTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +433,7 @@
 				E32805391A8F01C90067AD88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

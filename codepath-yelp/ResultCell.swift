@@ -1,5 +1,5 @@
 //
-//  RestaurantCell.swift
+//  ResultCell.swift
 //  codepath-yelp
 //
 //  Created by Kenshiro Nakagawa on 2/14/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RestaurantCell: UITableViewCell {
+class ResultCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
