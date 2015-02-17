@@ -31,9 +31,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let json = response as [String:AnyObject]
                 if let jsonBusinesses = json["businesses"] as? [[String:AnyObject]] {
                     for jsonBusiness in jsonBusinesses {
-                        var business = Business(json: jsonBusiness)
-                        self.businesses.append(business)
+                        self.businesses.append(Business(json: jsonBusiness))
                     }
+                    println(jsonBusinesses.first)
                     self.tableView.reloadData()
                 }
             }

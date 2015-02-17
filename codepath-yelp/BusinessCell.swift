@@ -10,13 +10,17 @@ import UIKit
 
 class BusinessCell: UITableViewCell {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var photoView: UIImageView!
+    @IBOutlet weak var ratingView: UIImageView!
+    
     var business: Business? {
         didSet {
             nameLabel.text = business?.name
+            ratingView.setImageWithURL(business?.ratingUrl)
+            photoView.setImageWithURL(business?.photoUrl)
         }
     }
-    
-    @IBOutlet weak var nameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
