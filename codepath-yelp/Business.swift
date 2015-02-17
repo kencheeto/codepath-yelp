@@ -17,6 +17,16 @@ class Business {
         return data["name"] as? String
     }
     
+    var address: String? {
+        let location = data["location"] as [String:AnyObject]!
+        let address = location["address"] as [String]
+        return address.first
+    }
+    
+    var distance: String? {
+        return "0.5 miles"
+    }
+    
     var photoUrl: NSURL? {
         return NSURL(string: data["image_url"] as String!)
     }

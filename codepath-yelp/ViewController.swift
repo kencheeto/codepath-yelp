@@ -25,7 +25,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         navTitle.titleView = UISearchBar()
         tableView.dataSource = self
         tableView.delegate = self
-        
+        tableView.separatorInset = UIEdgeInsetsZero
         client.searchWithTerm("ramen",
             success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
                 let json = response as [String:AnyObject]
@@ -56,5 +56,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return businesses.count
     }
+
 }
 
