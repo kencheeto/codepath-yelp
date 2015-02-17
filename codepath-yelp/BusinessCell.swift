@@ -1,5 +1,5 @@
 //
-//  ResultCell.swift
+//  BusinessCell.swift
 //  codepath-yelp
 //
 //  Created by Kenshiro Nakagawa on 2/14/15.
@@ -8,17 +8,22 @@
 
 import UIKit
 
-class ResultCell: UITableViewCell {
+class BusinessCell: UITableViewCell {
 
+    var business: Business? {
+        didSet {
+            nameLabel.text = business?.name
+        }
+    }
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

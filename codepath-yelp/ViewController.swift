@@ -13,32 +13,31 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var navTitle: UINavigationItem!
     
-    let yelpConsumerKey = "wKO9wEkDOvQFOHn59FYNfg"
-    let yelpConsumerSecret = "0u5lkyQUzjxsbhOnl9-x6ldrb_o"
-    let yelpToken = "pn4keIXccw6DjBquIf6Ko7vy4X3ezR8J"
-    let yelpTokenSecret = "-fPvFaYpKmqcOCzHHc2Fau7-KCM"
+    private var businesses: [Business] = []
+    private let client = YelpClient()
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    private var results = [:]
-    private var client: YelpClient!
-
     override func viewDidLoad() {
         super.viewDidLoad()
         navTitle.titleView = UISearchBar()
+        tableView.dataSource = self
+        tableView.delegate = self
         
-        client = YelpClient(
-            consumerKey: yelpConsumerKey,
-            consumerSecret: yelpConsumerSecret,
-            accessToken: yelpToken,
-            accessSecret: yelpTokenSecret
-        )
-        
-        client.searchWithTerm("Thai", success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-            println(response)
-            }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+        client.searchWithTerm("ramen",
+            success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                let json = response as [String:AnyObject]
+                if let jsonBusinesses = json["businesses"] as? [[String:AnyObject]] {
+                    for jsonBusiness in jsonBusinesses {
+                        var business = Business(json: jsonBusiness)
+                        self.businesses.append(business)
+                    }
+                    self.tableView.reloadData()
+                }
+            }
+        ) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
                 println(error)
         }
     }
@@ -49,12 +48,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("ResultCell") as ResultCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("BusinessCell") as BusinessCell
+        cell.business = businesses[indexPath.row] as Business
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results.count
+        return businesses.count
     }
 }
 
