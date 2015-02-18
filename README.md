@@ -31,3 +31,4 @@ Time spent: `8`
 
 ### Walkthrough
 
+![demo](https://cloud.githubusercontent.com/assets/279406/6243643/df211282-b6fa-11e4-8ad9-6db3164982a5.gif)
