@@ -22,9 +22,10 @@ final class Business {
   }
   
   var address: String? {
-    let location = data["location"] as [String:AnyObject]!
-    let address = location["address"] as [String]
-    return address.first
+    if let location = data["location"] as? [String:AnyObject] {
+      return (location["address"] as [String]).first
+    }
+    return nil
   }
   
   var distance: String? {
@@ -32,11 +33,17 @@ final class Business {
   }
   
   var photoUrl: NSURL? {
-    return NSURL(string: data["image_url"] as String!)
+    if let url = data["image_url"] as? String {
+      return NSURL(string: url)
+    }
+    return nil
   }
   
   var ratingUrl: NSURL? {
-    return NSURL(string: data["rating_img_url"] as String!)
+    if let url = data["rating_img_url"] as? String {
+      return NSURL(string: url)
+    }
+    return nil
   }
   
 }
