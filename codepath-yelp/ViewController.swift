@@ -25,7 +25,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         navTitle.titleView = UISearchBar()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.separatorInset = UIEdgeInsetsZero
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 80
+        
         client.searchWithTerm("ramen",
             success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
                 let json = response as [String:AnyObject]

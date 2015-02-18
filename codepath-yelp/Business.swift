@@ -17,6 +17,10 @@ class Business {
         return data["name"] as? String
     }
     
+    var snippet: String? {
+        return data["snippet_text"] as? String
+    }
+    
     var address: String? {
         let location = data["location"] as [String:AnyObject]!
         let address = location["address"] as [String]
@@ -32,7 +36,7 @@ class Business {
     }
 
     var ratingUrl: NSURL? {
-        return NSURL(string: data["rating_img_url_small"] as String!)
+        return NSURL(string: data["rating_img_url"] as String!)
     }
 
 }

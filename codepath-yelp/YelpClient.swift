@@ -37,7 +37,7 @@ class YelpClient: BDBOAuth1RequestOperationManager {
         // For additional parameters, see http://www.yelp.com/developers/documentation/v2/search_api
         var parameters = [
             "term": term,
-            "location": "San Francisco"
+            "ll": "37.782193,-122.410254"
         ]
         return self.GET(
             "search",

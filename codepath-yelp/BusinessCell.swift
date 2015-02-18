@@ -15,11 +15,13 @@ class BusinessCell: UITableViewCell {
     @IBOutlet weak var ratingView: UIImageView!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var snippetLabel: UILabel!
     
     var business: Business? {
         didSet {
             nameLabel.text = business?.name
             addressLabel.text = business?.address
+            snippetLabel.text = business?.snippet
             ratingView.setImageWithURL(business?.ratingUrl)
             photoView.layer.cornerRadius = 4.0
             photoView.layer.borderColor = UIColor.whiteColor().CGColor
@@ -31,7 +33,6 @@ class BusinessCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         separatorInset = UIEdgeInsetsZero
         preservesSuperviewLayoutMargins = false
         layoutMargins = UIEdgeInsetsZero
