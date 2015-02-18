@@ -10,9 +10,8 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FiltersViewControllerDelegate {
 
-    @IBOutlet var tableView: UITableView!
-    
-    @IBOutlet weak var filterButton: UIBarButtonItem!
+    @IBOutlet private var tableView: UITableView!
+    @IBOutlet private weak var filterButton: UIBarButtonItem!
     
     private var businesses: [Business] = []
     private let client = YelpClient()
@@ -56,17 +55,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("BusinessCell") as BusinessCell
         cell.business = businesses[indexPath.row] as Business
         return cell
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return businesses.count
     }
     
-    func filtersViewController(viewController: UIViewController, didApplyFilters filters: [String:String]) {
+    internal func filtersViewController(viewController: UIViewController, didApplyFilters filters: [String:String]) {
         println("filters are: ")
         println(filters)
         if let term = filters["category"] {

@@ -10,12 +10,12 @@ import UIKit
 
 class BusinessCell: UITableViewCell {
 
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var photoView: UIImageView!
-    @IBOutlet weak var ratingView: UIImageView!
-    @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var snippetLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var photoView: UIImageView!
+    @IBOutlet private weak var ratingView: UIImageView!
+    @IBOutlet private weak var distanceLabel: UILabel!
+    @IBOutlet private weak var addressLabel: UILabel!
+    @IBOutlet private weak var snippetLabel: UILabel!
     
     var business: Business? {
         didSet {

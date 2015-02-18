@@ -18,11 +18,11 @@ protocol FiltersViewControllerDelegate : class {
 
 class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FilterCellDelegate {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
     weak var delegate: FiltersViewControllerDelegate?
-    var filters: [String:String] = [:]
-    let categories = ["ramen", "sushi", "yakitori"]
+    private var filters: [String:String] = [:]
+    private let categories = ["ramen", "sushi", "yakitori"]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -50,30 +50,20 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("CategoryFilterCell") as CategoryFilterCell
         cell.categoryLabel.text = categories[indexPath.row]
         cell.delegate = self
         return cell
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories.count
     }
     
-    func filterCell(cell: UITableViewCell, didSetFilter filter: (String,String)) {
+    internal func filterCell(cell: UITableViewCell, didSetFilter filter: (String,String)) {
         let (type, value) = filter
         filters[type] = value
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

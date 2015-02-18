@@ -11,7 +11,7 @@ import UIKit
 class CategoryFilterCell: UITableViewCell {
 
     @IBOutlet weak var categoryLabel: UILabel!
-    @IBOutlet weak var categorySwitch: UISwitch!
+    @IBOutlet private weak var categorySwitch: UISwitch!
     weak var delegate: FilterCellDelegate?
     
     override func awakeFromNib() {
@@ -26,7 +26,7 @@ class CategoryFilterCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    @IBAction func categoryToggled(sender: UISwitch) {
+    @IBAction private func categoryToggled(sender: UISwitch) {
         if (sender.on) {
             delegate?.filterCell(self, didSetFilter: ("category", categoryLabel.text!))
         }
