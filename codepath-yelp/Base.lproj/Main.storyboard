@@ -126,9 +126,65 @@
                     <view key="view" contentMode="scaleToFill" id="7hI-hr-F2w">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Qzq-SV-Lyw">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryFilterCell" id="cZg-BQ-ob7" customClass="CategoryFilterCell" customModule="codepath_yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cZg-BQ-ob7" id="U7c-bX-V0m">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9nx-09-ACr">
+                                                    <rect key="frame" x="263" y="8" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="categoryToggled:" destination="cZg-BQ-ob7" eventType="valueChanged" id="sYf-Af-cQV"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="any-4n-XcX">
+                                                    <rect key="frame" x="8" y="8" width="71" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="any-4n-XcX" firstAttribute="top" secondItem="U7c-bX-V0m" secondAttribute="topMargin" id="6Uf-hV-pym"/>
+                                                <constraint firstItem="any-4n-XcX" firstAttribute="leading" secondItem="U7c-bX-V0m" secondAttribute="leadingMargin" id="Zqs-5V-ivN"/>
+                                                <constraint firstItem="9nx-09-ACr" firstAttribute="top" secondItem="U7c-bX-V0m" secondAttribute="topMargin" id="as3-2r-JPT"/>
+                                                <constraint firstItem="9nx-09-ACr" firstAttribute="trailing" secondItem="U7c-bX-V0m" secondAttribute="trailingMargin" id="biP-gh-aps"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="categoryLabel" destination="any-4n-XcX" id="HfE-I0-bqq"/>
+                                            <outlet property="categorySwitch" destination="9nx-09-ACr" id="Kuu-Tr-nw3"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="GhJ-Yy-1PL">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GhJ-Yy-1PL" id="RWg-tF-Qwt">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ILN-pq-edX">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ILN-pq-edX" id="d5W-B6-IgY">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Filter" id="fsl-Ng-0Dg"/>
+                    <connections>
+                        <outlet property="tableView" destination="Qzq-SV-Lyw" id="V1u-sa-eAv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hfG-7z-ZrC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,19 +8,31 @@
 
 import UIKit
 
-protocol FiltersViewControllerDelegate : class {
-    func filtersViewController(viewController: UIViewController, didApplyFilters filters: [Int:Bool])
+protocol FilterCellDelegate : class {
+    func filterCell(cell: UITableViewCell, didSetFilter filter: (String,String))
 }
 
-class FiltersViewController: UIViewController {
+protocol FiltersViewControllerDelegate : class {
+    func filtersViewController(viewController: UIViewController, didApplyFilters filters: [String:String])
+}
 
+class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FilterCellDelegate {
+
+    @IBOutlet weak var tableView: UITableView!
+    
     weak var delegate: FiltersViewControllerDelegate?
-    var filters: [Int:Bool] = [:]
+    var filters: [String:String] = [:]
+    let categories = ["ramen", "sushi", "yakitori"]
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "onCancelButton")
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Apply", style: UIBarButtonItemStyle.Plain, target: self, action: "onApplyButton")
+        
+        
         // Do any additional setup after loading the view.
     }
 
@@ -36,6 +48,22 @@ class FiltersViewController: UIViewController {
     func onApplyButton() {
         delegate?.filtersViewController(self, didApplyFilters: filters)
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier("CategoryFilterCell") as CategoryFilterCell
+        cell.categoryLabel.text = categories[indexPath.row]
+        cell.delegate = self
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return categories.count
+    }
+    
+    func filterCell(cell: UITableViewCell, didSetFilter filter: (String,String)) {
+        let (type, value) = filter
+        filters[type] = value
     }
     
     /*

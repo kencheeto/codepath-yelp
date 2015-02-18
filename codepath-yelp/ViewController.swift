@@ -29,20 +29,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 80
         
-        client.searchWithTerm("ramen",
-            success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-                let json = response as [String:AnyObject]
-                if let jsonBusinesses = json["businesses"] as? [[String:AnyObject]] {
-                    for jsonBusiness in jsonBusinesses {
-                        self.businesses.append(Business(json: jsonBusiness))
-                    }
-                    println(jsonBusinesses.first)
-                    self.tableView.reloadData()
-                }
-            }
-        ) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                println(error)
-        }
+        search("ramen")
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,6 +37,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Dispose of any resources that can be recreated.
     }
 
+    private func search(term: String) {
+        println("searching for ")
+        println(term)
+        self.businesses = []
+        client.searchWithTerm(term,
+            success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+                let json = response as [String:AnyObject]
+                if let jsonBusinesses = json["businesses"] as? [[String:AnyObject]] {
+                    for jsonBusiness in jsonBusinesses {
+                        self.businesses.append(Business(json: jsonBusiness))
+                    }
+                    self.tableView.reloadData()
+                }
+            }
+            ) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println(error)
+        }
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("BusinessCell") as BusinessCell
         cell.business = businesses[indexPath.row] as Business
@@ -60,14 +66,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return businesses.count
     }
     
-    func filtersViewController(viewController: UIViewController, didApplyFilters filters: [Int : Bool]) {
-        println("argh")
+    func filtersViewController(viewController: UIViewController, didApplyFilters filters: [String:String]) {
+        println("filters are: ")
+        println(filters)
+        if let term = filters["category"] {
+            search(filters["category"]!)
+        } else {
+            search("ramen")
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var filtersViewController = (segue.destinationViewController as UINavigationController).topViewController as FiltersViewController
+        let filtersViewController = (segue.destinationViewController as UINavigationController).topViewController as FiltersViewController
         filtersViewController.delegate = self
-        println("foo")
     }
 }
 
