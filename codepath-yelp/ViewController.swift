@@ -11,7 +11,8 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
-    @IBOutlet weak var navTitle: UINavigationItem!
+    
+    @IBOutlet weak var filterButton: UIBarButtonItem!
     
     private var businesses: [Business] = []
     private let client = YelpClient()
@@ -22,7 +23,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navTitle.titleView = UISearchBar()
+        navigationItem.titleView = UISearchBar()
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -58,6 +59,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return businesses.count
     }
-
+    
+    @IBAction func onFilterButton(sender: UIBarButtonItem) {
+        println("boo")
+    }
+    
 }
 

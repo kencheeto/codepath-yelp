@@ -89,9 +89,16 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="ab1-9j-cSr"/>
+                    <navigationItem key="navigationItem" title="Title" id="YHK-Ef-QPZ">
+                        <barButtonItem key="leftBarButtonItem" title="Filter" id="ljf-RY-igR">
+                            <connections>
+                                <action selector="onFilterButton:" destination="vXZ-lx-hvc" id="bFH-ql-Pji"/>
+                                <segue destination="6kh-IC-knb" kind="modal" id="GmP-di-PFA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="navTitle" destination="ab1-9j-cSr" id="ICo-AU-lgQ"/>
+                        <outlet property="filterButton" destination="ljf-RY-igR" id="ial-xz-ZMJ"/>
                         <outlet property="searchDisplayController" destination="9HD-5B-GNt" id="izk-OV-ePa"/>
                         <outlet property="tableView" destination="0XY-ej-xMc" id="GCi-Bb-T6c"/>
                     </connections>
@@ -107,6 +114,25 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="766" y="406"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="84p-9W-XSK">
+            <objects>
+                <viewController id="jqD-5e-EM0" customClass="FiltersViewController" customModule="codepath_yelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hei-MH-NBA"/>
+                        <viewControllerLayoutGuide type="bottom" id="bT4-Mj-FVp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7hI-hr-F2w">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="fsl-Ng-0Dg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hfG-7z-ZrC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1738" y="406"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SNC-xN-TXh">
@@ -125,6 +151,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3en-m4-8HB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="234" y="406"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="e86-l3-Ede">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6kh-IC-knb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Uoe-R4-ePR"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5rA-tF-B8T">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jqD-5e-EM0" kind="relationship" relationship="rootViewController" id="ZLg-w7-Dak"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TnY-5S-4WS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1206" y="406"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
