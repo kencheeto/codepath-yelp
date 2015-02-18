@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FiltersViewControllerDelegate {
+final class ViewController: UIViewController {
   
   @IBOutlet private var tableView: UITableView!
   @IBOutlet private weak var filterButton: UIBarButtonItem!
@@ -24,16 +24,10 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
     super.viewDidLoad()
     navigationItem.titleView = UISearchBar()
     tableView.dataSource = self
-    tableView.delegate = self
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 80
     
     search(term: "ramen")
-  }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
   }
   
   private func search(#term: String) {
@@ -53,16 +47,27 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
   }
   
+  internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return businesses.count
+  }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    let filtersViewController = (segue.destinationViewController as UINavigationController).topViewController as FiltersViewController
+    filtersViewController.delegate = self
+  }
+}
+
+// MARK: - UITableViewDataSource
+extension ViewController: UITableViewDataSource {
   internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell = tableView.dequeueReusableCellWithIdentifier("BusinessCell") as BusinessCell
     cell.business = businesses[indexPath.row] as Business
     return cell
   }
-  
-  internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return businesses.count
-  }
-  
+}
+
+// MARK: - FiltersViewControllerDelegate
+extension ViewController: FiltersViewControllerDelegate {
   internal func filtersViewController(viewController: UIViewController, didApplyFilters filters: [String:String]) {
     println("filters are: ")
     println(filters)
@@ -72,10 +77,4 @@ final class ViewController: UIViewController, UITableViewDelegate, UITableViewDa
       search(term: "ramen")
     }
   }
-  
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    let filtersViewController = (segue.destinationViewController as UINavigationController).topViewController as FiltersViewController
-    filtersViewController.delegate = self
-  }
 }
-
