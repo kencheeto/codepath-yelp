@@ -115,7 +115,7 @@
             </objects>
             <point key="canvasLocation" x="766" y="406"/>
         </scene>
-        <!--Title-->
+        <!--Filter-->
         <scene sceneID="84p-9W-XSK">
             <objects>
                 <viewController id="jqD-5e-EM0" customClass="FiltersViewController" customModule="codepath_yelp" customModuleProvider="target" sceneMemberID="viewController">
@@ -128,7 +128,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="fsl-Ng-0Dg"/>
+                    <navigationItem key="navigationItem" title="Filter" id="fsl-Ng-0Dg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hfG-7z-ZrC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

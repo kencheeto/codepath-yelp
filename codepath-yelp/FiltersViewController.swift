@@ -8,8 +8,14 @@
 
 import UIKit
 
+protocol FiltersViewControllerDelegate : class {
+    func filtersViewController(viewController: UIViewController, didApplyFilters filters: [Int:Bool])
+}
+
 class FiltersViewController: UIViewController {
 
+    weak var delegate: FiltersViewControllerDelegate?
+    var filters: [Int:Bool] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,6 +34,7 @@ class FiltersViewController: UIViewController {
     }
 
     func onApplyButton() {
+        delegate?.filtersViewController(self, didApplyFilters: filters)
         dismissViewControllerAnimated(true, completion: nil)
     }
     

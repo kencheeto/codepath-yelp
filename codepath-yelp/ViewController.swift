@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, FiltersViewControllerDelegate {
 
     @IBOutlet var tableView: UITableView!
     
@@ -60,9 +60,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return businesses.count
     }
     
-    @IBAction func onFilterButton(sender: UIBarButtonItem) {
-        println("boo")
+    func filtersViewController(viewController: UIViewController, didApplyFilters filters: [Int : Bool]) {
+        println("argh")
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var filtersViewController = (segue.destinationViewController as UINavigationController).topViewController as FiltersViewController
+        filtersViewController.delegate = self
+        println("foo")
+    }
 }
 
