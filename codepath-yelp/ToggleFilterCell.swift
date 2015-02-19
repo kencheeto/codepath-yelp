@@ -1,5 +1,5 @@
 //
-//  CategoryFilterCell.swift
+//  ToggleFilterCell.swift
 //  codepath-yelp
 //
 //  Created by Kenshiro Nakagawa on 2/17/15.
@@ -8,17 +8,18 @@
 
 import UIKit
 
-final class CategoryFilterCell: UITableViewCell {
+final class ToggleFilterCell: UITableViewCell {
+
+  @IBOutlet weak var toggleSwitch: UISwitch!
+  @IBOutlet weak var toggleLabel: UILabel!
   
-  @IBOutlet weak var categoryLabel: UILabel!
-  @IBOutlet private weak var categorySwitch: UISwitch!
-  
+  var toggleType: String!
   weak var delegate: FilterCellDelegate?
 
-  var category: String! {
+  var toggle: String! {
     didSet {
-      categoryLabel.text = category?.capitalizedString
-      categorySwitch.on = false
+      toggleLabel.text = toggle?.capitalizedString
+      toggleSwitch.on = false
     }
   }
 
@@ -33,9 +34,9 @@ final class CategoryFilterCell: UITableViewCell {
     // Configure the view for the selected state
   }
   
-  @IBAction private func categoryToggled(sender: UISwitch) {
+  @IBAction private func didToggle(sender: UISwitch) {
     if (sender.on) {
-      delegate?.filterCell(self, didSetFilter: ("category", category))
+      delegate?.filterCell(self, didSetFilter: (toggleType, toggle))
     }
   }
 }

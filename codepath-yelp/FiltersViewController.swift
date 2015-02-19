@@ -18,44 +18,39 @@ protocol FiltersViewControllerDelegate : class {
 
 final class FiltersViewController: UIViewController {
   
+  @IBOutlet weak var searchButton: UIBarButtonItem!
+  @IBOutlet weak var cancelButton: UIBarButtonItem!
   @IBOutlet private weak var tableView: UITableView!
 
   weak var delegate: FiltersViewControllerDelegate?
   
   private var filters: [String:String] = [:]
-  private let categories = ["ramen", "sushi", "indian", "yakitori"]
-  private let sections = ["categories", "sort", "radius", "deals"]
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    tableView.dataSource = self
-    
-    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.Plain, target: self, action: "onCancelButton")
-    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Apply", style: UIBarButtonItemStyle.Plain, target: self, action: "onApplyButton")
-  }
-  
-  func onCancelButton() {
+//  private let categories = ["ramen", "sushi", "indian", "yakitori"]
+//  private let sections = ["categories", "sort", "radius", "deals"]
+  let sections = [
+    (type: "categories", options: ["ramen", "sushi", "indian", "yakitori"]),
+    (type: "sort", options: ["best match", "distance", "highest rated"]),
+    (type: "radius", options: ["within 1km"]),
+    (type: "deals", options: ["with deals"])
+  ]
+//  private let sortOptions = ["best match", "distance", "highest rated"]
+  @IBAction func onCancelButton(sender: UIBarButtonItem) {
     dismissViewControllerAnimated(true, completion: nil)
   }
   
-  func onApplyButton() {
+  @IBAction func onApplyButton(sender: UIBarButtonItem) {
     delegate?.filtersViewController(self, didApplyFilters: filters)
     dismissViewControllerAnimated(true, completion: nil)
   }
   
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    tableView.dataSource = self
+  }
+  
   internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    let rowsPerSection = [
-      0: 4, // categories
-      1: 3, // ways to sort
-      2: 1, // radius to filter by
-      3: 1  // option to toggle deals
-    ]
-    if rowsPerSection[section] != nil {
-      return rowsPerSection[section]!
-    } else {
-      return 0
-    }
+    if section < 0 || section > 3 { 0 }
+    return sections[section].options.count
   }
 }
 
@@ -71,15 +66,12 @@ extension FiltersViewController: FilterCellDelegate {
 extension FiltersViewController: UITableViewDataSource {
   internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     switch indexPath.section {
-    case 0:
-      var categoryCell = tableView.dequeueReusableCellWithIdentifier("CategoryFilterCell") as CategoryFilterCell
-      categoryCell.category = categories[indexPath.row]
-      categoryCell.delegate = self
-      return categoryCell
-//    case 1:
-//      var sortCell = tableView.dequeueReusableCellWithIdentifier("SortFilterCell") as
-//    case 2:
-//    case 3:
+    case 0, 1:
+      var toggleCell = tableView.dequeueReusableCellWithIdentifier("ToggleFilterCell") as ToggleFilterCell
+      toggleCell.toggleType = sections[indexPath.section].type
+      toggleCell.toggle = sections[indexPath.section].options[indexPath.row]
+      toggleCell.delegate = self
+      return toggleCell
     default:
       return UITableViewCell()
     }

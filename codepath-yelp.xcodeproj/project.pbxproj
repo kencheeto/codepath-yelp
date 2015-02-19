@@ -17,7 +17,7 @@
 		E32805311A8F01C90067AD88 /* codepath_yelpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32805301A8F01C90067AD88 /* codepath_yelpTests.swift */; };
 		E328053D1A8F3C180067AD88 /* BusinessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E328053C1A8F3C180067AD88 /* BusinessCell.swift */; };
 		E348F1CD1A914CAB002E9473 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E348F1CC1A914CAB002E9473 /* YelpClient.swift */; };
-		E3AC26441A94578900FB988F /* CategoryFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC26431A94578900FB988F /* CategoryFilterCell.swift */; };
+		E3AC26441A94578900FB988F /* ToggleFilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AC26431A94578900FB988F /* ToggleFilterCell.swift */; };
 		E3D1E6651A92CE0D0005727E /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D1E6641A92CE0D0005727E /* Business.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +49,7 @@
 		E328053C1A8F3C180067AD88 /* BusinessCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessCell.swift; sourceTree = "<group>"; };
 		E348F1CC1A914CAB002E9473 /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
 		E348F1CE1A914D0E002E9473 /* codepath-yelp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "codepath-yelp-Bridging-Header.h"; sourceTree = "<group>"; };
-		E3AC26431A94578900FB988F /* CategoryFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryFilterCell.swift; sourceTree = "<group>"; };
+		E3AC26431A94578900FB988F /* ToggleFilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleFilterCell.swift; sourceTree = "<group>"; };
 		E3D1E6641A92CE0D0005727E /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,7 +123,7 @@
 				E348F1CE1A914D0E002E9473 /* codepath-yelp-Bridging-Header.h */,
 				E3D1E6641A92CE0D0005727E /* Business.swift */,
 				E30806CB1A94413900B3181C /* FiltersViewController.swift */,
-				E3AC26431A94578900FB988F /* CategoryFilterCell.swift */,
+				E3AC26431A94578900FB988F /* ToggleFilterCell.swift */,
 			);
 			path = "codepath-yelp";
 			sourceTree = "<group>";
@@ -294,7 +294,7 @@
 				E3D1E6651A92CE0D0005727E /* Business.swift in Sources */,
 				E30806CC1A94413900B3181C /* FiltersViewController.swift in Sources */,
 				E328051B1A8F01C90067AD88 /* AppDelegate.swift in Sources */,
-				E3AC26441A94578900FB988F /* CategoryFilterCell.swift in Sources */,
+				E3AC26441A94578900FB988F /* ToggleFilterCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

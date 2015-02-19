@@ -132,7 +132,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryFilterCell" id="cZg-BQ-ob7" customClass="CategoryFilterCell" customModule="codepath_yelp" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToggleFilterCell" id="cZg-BQ-ob7" customClass="ToggleFilterCell" customModule="codepath_yelp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cZg-BQ-ob7" id="U7c-bX-V0m">
@@ -141,11 +141,11 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9nx-09-ACr">
                                                     <rect key="frame" x="263" y="6" width="51" height="31"/>
                                                     <connections>
-                                                        <action selector="categoryToggled:" destination="cZg-BQ-ob7" eventType="valueChanged" id="sYf-Af-cQV"/>
+                                                        <action selector="didToggle:" destination="cZg-BQ-ob7" eventType="valueChanged" id="XGE-dy-XnL"/>
                                                     </connections>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="any-4n-XcX">
-                                                    <rect key="frame" x="8" y="11.5" width="70.5" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Toggle name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="any-4n-XcX">
+                                                    <rect key="frame" x="8" y="11" width="98" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -159,8 +159,36 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="categoryLabel" destination="any-4n-XcX" id="HfE-I0-bqq"/>
-                                            <outlet property="categorySwitch" destination="9nx-09-ACr" id="Kuu-Tr-nw3"/>
+                                            <outlet property="toggleLabel" destination="any-4n-XcX" id="8Vl-bz-hnN"/>
+                                            <outlet property="toggleSwitch" destination="9nx-09-ACr" id="5yO-4y-9sD"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SortFilterCell" id="5ga-lk-heC" customClass="SortFilterCell" customModule="codepath_yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5ga-lk-heC" id="VI3-e2-rnm">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u0c-6h-2NQ">
+                                                    <rect key="frame" x="263" y="6" width="51" height="31"/>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort option name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jT1-44-UVk">
+                                                    <rect key="frame" x="8" y="11" width="133" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="u0c-6h-2NQ" firstAttribute="trailing" secondItem="VI3-e2-rnm" secondAttribute="trailingMargin" id="Bt8-uF-mql"/>
+                                                <constraint firstAttribute="centerY" secondItem="jT1-44-UVk" secondAttribute="centerY" id="Efs-l8-F3n"/>
+                                                <constraint firstItem="jT1-44-UVk" firstAttribute="leading" secondItem="VI3-e2-rnm" secondAttribute="leadingMargin" id="hn8-Mk-TBM"/>
+                                                <constraint firstAttribute="centerY" secondItem="u0c-6h-2NQ" secondAttribute="centerY" id="wcW-OH-YfV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="sortByLabel" destination="jT1-44-UVk" id="CWx-r7-x2r"/>
+                                            <outlet property="sortBySwitch" destination="u0c-6h-2NQ" id="Scg-Rm-IdN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -174,8 +202,21 @@
                             <constraint firstItem="Qzq-SV-Lyw" firstAttribute="leading" secondItem="7hI-hr-F2w" secondAttribute="leading" id="woP-Qa-mfB"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Filter" id="fsl-Ng-0Dg"/>
+                    <navigationItem key="navigationItem" title="Filter" id="fsl-Ng-0Dg">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="z3j-1z-GCb">
+                            <connections>
+                                <action selector="onCancelButton:" destination="jqD-5e-EM0" id="RDC-rn-yg6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Search" id="BtI-3e-aPa">
+                            <connections>
+                                <action selector="onApplyButton:" destination="jqD-5e-EM0" id="ZWr-b8-EVR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="z3j-1z-GCb" id="BuH-FU-ZaT"/>
+                        <outlet property="searchButton" destination="BtI-3e-aPa" id="vTv-8B-j3X"/>
                         <outlet property="tableView" destination="Qzq-SV-Lyw" id="V1u-sa-eAv"/>
                     </connections>
                 </viewController>
