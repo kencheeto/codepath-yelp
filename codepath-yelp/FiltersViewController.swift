@@ -16,14 +16,16 @@ protocol FiltersViewControllerDelegate : class {
   func filtersViewController(viewController: UIViewController, didApplyFilters filters: [String:String])
 }
 
-final class FiltersViewController: UIViewController, UITableViewDataSource {
+final class FiltersViewController: UIViewController {
   
   @IBOutlet private weak var tableView: UITableView!
 
   weak var delegate: FiltersViewControllerDelegate?
   
   private var filters: [String:String] = [:]
-  private let categories = ["ramen", "sushi", "yakitori"]
+  private let categories = ["ramen", "sushi", "indian", "yakitori"]
+  private let sections = ["categories", "sort", "radius", "deals"]
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -43,9 +45,18 @@ final class FiltersViewController: UIViewController, UITableViewDataSource {
   }
   
   internal func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return categories.count
+    let rowsPerSection = [
+      0: 4, // categories
+      1: 3, // ways to sort
+      2: 1, // radius to filter by
+      3: 1  // option to toggle deals
+    ]
+    if rowsPerSection[section] != nil {
+      return rowsPerSection[section]!
+    } else {
+      return 0
+    }
   }
-  
 }
 
 // MARK: - FilterCellDelegate
@@ -59,9 +70,31 @@ extension FiltersViewController: FilterCellDelegate {
 // MARK: - UITableViewDataSource
 extension FiltersViewController: UITableViewDataSource {
   internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    var cell = tableView.dequeueReusableCellWithIdentifier("CategoryFilterCell") as CategoryFilterCell
-    cell.categoryLabel.text = categories[indexPath.row]
-    cell.delegate = self
-    return cell
+    switch indexPath.section {
+    case 0:
+      var categoryCell = tableView.dequeueReusableCellWithIdentifier("CategoryFilterCell") as CategoryFilterCell
+      categoryCell.category = categories[indexPath.row]
+      categoryCell.delegate = self
+      return categoryCell
+//    case 1:
+//      var sortCell = tableView.dequeueReusableCellWithIdentifier("SortFilterCell") as
+//    case 2:
+//    case 3:
+    default:
+      return UITableViewCell()
+    }
+  }
+  
+  internal func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    return 4 // categories, sort, radius, deals
+  }
+  
+  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    return [
+      0: "Categories",
+      1: "Sort by",
+      2: "Within",
+      3: "Deals on/off"
+    ][section]
   }
 }

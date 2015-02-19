@@ -12,11 +12,18 @@ final class CategoryFilterCell: UITableViewCell {
   
   @IBOutlet weak var categoryLabel: UILabel!
   @IBOutlet private weak var categorySwitch: UISwitch!
-  weak var delegate: FilterCellDelegate?
   
+  weak var delegate: FilterCellDelegate?
+
+  var category: String! {
+    didSet {
+      categoryLabel.text = category?.capitalizedString
+      categorySwitch.on = false
+    }
+  }
+
   override func awakeFromNib() {
     super.awakeFromNib()
-    categorySwitch.on = false
     // Initialization code
   }
   
@@ -28,7 +35,7 @@ final class CategoryFilterCell: UITableViewCell {
   
   @IBAction private func categoryToggled(sender: UISwitch) {
     if (sender.on) {
-      delegate?.filterCell(self, didSetFilter: ("category", categoryLabel.text!))
+      delegate?.filterCell(self, didSetFilter: ("category", category))
     }
   }
 }
