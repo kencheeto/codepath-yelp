@@ -2,7 +2,7 @@
 
 This is a Yelp search app using the [Yelp API](http://developer.rottentomatoes.com/docs/read/JSON).
 
-Time spent: `8`
+Time spent: `10`
 
 ### Features
 
@@ -31,4 +31,4 @@ Time spent: `8`
 
 ### Walkthrough
 
-![demo](https://cloud.githubusercontent.com/assets/279406/6243643/df211282-b6fa-11e4-8ad9-6db3164982a5.gif)
+![demo](https://cloud.githubusercontent.com/assets/279406/6263241/e2850176-b7c8-11e4-858e-17c1995fc0bd.gif)
